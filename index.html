@@ -27,15 +27,78 @@
     <div class="container">
 
         <div id="app">
-                Teste Vue.JS
-        </div>
+                
+            <div class="col-md-6"> <!-- seção img -->
+                <div class="row mt-2">
+                    <div class="col"> <!-- propriedades computadas -->
 
+                        <img :src="pao[0]">
+                        <img :src="alface">
+                        <img :src="ketchup">
+                        <img :src="mostarda">
+                        <img :src="maionese">
+                        <img :src="hamburguer">
+                        <img :src="pao[1]">
+                    </div>
+                </div>
+            </div> <!-- FIM seção img -->
+
+            <div class="col-md-6">
+                <!-- TIPO do pão -->
+
+                <div class="row mt-2">
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-header">
+                                Tipo de pão 
+                            </div>
+
+                            <div class="card-body">
+
+                                <div class="form-check form-check-inline">
+
+                                    <input class="form-check-input" type="radio" value="gergelim" v-model="inputTipoPao">
+
+                                    <label class="form-check-label">Gergelim</label>
+                                </div>
+
+                                <div class="form-check form-check-inline">
+
+                                    <input class="form-check-input" type="radio" value="australiano" v-model="inputTipoPao">
+
+                                    <label class="form-check-label">Australiano</label>
+                                </div>
+
+
+                            </div>
+                        </div> <!-- fim card -->
+                    </div>
+                </div>
+                <!-- Fim tipo pão -->
+
+            </div>
+
+
+        </div>
     </div>
 
     <!-- instancia VUE -->
     <script>
         const vm = new Vue ({
             el: '#app',
+
+            data: { /* atributos/propriedades */
+                inputTipoPao: '', 
+            },
+
+            computed: { /* propriedades computadas / reativos */
+                pao() {
+                    switch(this.inputTipoPao) {
+                        case 'gergelim': 
+                            return []
+                    }
+                },
+            },
 
         })
     </script>
